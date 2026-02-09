@@ -99,7 +99,7 @@
                     <div class="tab" onclick="s(this,'en')">English</div>
                 </div>
             </div>
-            <div id="info" class="sheet-status">Se sincronizează datele...</div>
+            <div id="info" class="sheet-status">Lista este gata! Se verifică selecția...</div>
         </div>
         <div id="st" style="text-align:right; font-size:11px; margin-bottom:8px"></div>
         <div id="l" class="song-list"></div>
@@ -112,7 +112,7 @@
         let filter = 'all';
         let cur = -1;
 
-        async function init() {
+        async function init() { render();
             render(); 
             // iPhone safe fetch
             try {
