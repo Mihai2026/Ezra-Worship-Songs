@@ -290,6 +290,11 @@
             border-radius: 20px;
         }
 
+        .item.selected {
+            border-color: var(--p);
+            background: #242c3d;
+        }
+
         .swipe-action {
             position: absolute;
             right: 0;
@@ -306,11 +311,8 @@
             z-index: 1;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-
-        .item.selected {
-            border-color: rgba(255, 215, 0, 0.4);
-            background: rgba(255, 215, 0, 0.05);
+            opacity: 0;
+            transition: opacity 0.2s;
         }
 
         .ti {
@@ -947,7 +949,7 @@
                 } else if (info.selected === 'Yes') act = `<span style="color:var(--p);font-size:1.2rem;margin-right:10px">★</span>`;
 
                 return `<div class="item-row">
-                    <div class="swipe-action" onclick="quickNav(${idx},'removeSong','Yes',event)">REMOVE</div>
+                    <div class="swipe-action" id="sa-${idx}" onclick="quickNav(${idx},'removeSong','Yes',event)">REMOVE</div>
                     <div class="item ${info.selected === 'Yes' ? 'selected' : ''} ${selMode ? 'sel-mode' : ''} ${isChecked ? 'checked' : ''}" 
                         onclick="handleItemClick(${idx}, event)" 
                         oncontextmenu="toggleMulti(event)"
@@ -983,13 +985,21 @@
             const x = e.touches[0].clientX;
             const diff = Math.min(0, Math.max(-100, x - tX));
             document.getElementById('item-' + idx).style.transform = `translateX(${diff}px)`;
+            const sa = document.getElementById('sa-' + idx);
+            if (sa) sa.style.opacity = Math.abs(diff) > 20 ? 1 : 0;
         }
         function te(idx, e) {
             const el = document.getElementById('item-' + idx);
+            const sa = document.getElementById('sa-' + idx);
             el.style.transition = 'transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28)';
             const x = parseFloat(el.style.transform.replace('translateX(', '').replace('px)', '')) || 0;
-            if (x < -50) el.style.transform = 'translateX(-100px)';
-            else el.style.transform = 'translateX(0)';
+            if (x < -50) {
+                el.style.transform = 'translateX(-100px)';
+                if (sa) sa.style.opacity = 1;
+            } else {
+                el.style.transform = 'translateX(0)';
+                if (sa) sa.style.opacity = 0;
+            }
             tIdx = -1;
         }
 
