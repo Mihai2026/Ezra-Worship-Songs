@@ -926,13 +926,13 @@
                     <div style="flex:1; padding-left:14px">
                         <span class="ti">${s.title}</span>
                         <span class="au">${s.authors}</span>
-                        <div class="tag-box" style="margin-top:8px">
+                        <div class="tag-box" style="margin-top:8px; display:flex; gap:8px">
                             ${info.tempo ? `<span class="tg tg-${info.tempo.toLowerCase()}">${info.tempo}</span>` : ''}
+                            ${info.mood ? `<span class="tg" style="border-color:rgba(255,255,255,0.2)">${MOOD_MAP[info.mood] || info.mood}</span>` : ''}
                         </div>
                     </div> 
                     <div class="act-group">
                         ${act}
-                        ${info.mood ? `<span class="tg" style="border-color:rgba(255,255,255,0.3); color:rgba(255,255,255,0.8)">${MOOD_MAP[info.mood] || info.mood}</span>` : ''}
                         <span class="tg" style="opacity:0.4; border-width:1px">${s.lang.toUpperCase()}</span>
                     </div>
                 </div>`;
