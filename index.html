@@ -1215,19 +1215,54 @@
         }
 
         function r() {
-            const q = document.getElementById('in').value.toLowerCase();
+            console.log('r() called, songs.length:', songs.length, 'filter:', filter);
+
+            // Check if DOM elements exist
+            const inEl = document.getElementById('in');
+            if (!inEl) {
+                console.warn('Element #in not found, skipping r()');
+                return;
+            }
+
+            const q = inEl.value.toLowerCase();
             let nSel = 0, nRem = 0, nTotal = songs.length, nSorted = 0;
             songs.forEach(s => { const i = sheet[s.title] || {}; if (i.removed === 'Yes') nRem++; else { if (i.selected === 'Yes') { nSel++; if (i.tempo && i.mood) nSorted++; } } });
-            document.getElementById('sTotal').innerText = nTotal;
-            if (nSel > 0) { const unsorted = nSel - nSorted; const perc = Math.round((nSorted / nSel) * 100); document.getElementById('selStats').style.display = 'block'; document.getElementById('sUnsorted').innerText = unsorted; document.getElementById('sPerc').innerText = perc + '%'; } else { document.getElementById('selStats').style.display = 'none'; }
-            document.getElementById('cAll').innerText = nTotal;
-            document.getElementById('cSel').innerText = nSel;
-            document.getElementById('cRem').innerText = nRem;
+
+            const sTotalEl = document.getElementById('sTotal');
+            if (sTotalEl) sTotalEl.innerText = nTotal;
+
+            if (nSel > 0) {
+                const unsorted = nSel - nSorted;
+                const perc = Math.round((nSorted / nSel) * 100);
+                const selStatsEl = document.getElementById('selStats');
+                const sUnsortedEl = document.getElementById('sUnsorted');
+                const sPercEl = document.getElementById('sPerc');
+                if (selStatsEl) selStatsEl.style.display = 'block';
+                if (sUnsortedEl) sUnsortedEl.innerText = unsorted;
+                if (sPercEl) sPercEl.innerText = perc + '%';
+            } else {
+                const selStatsEl = document.getElementById('selStats');
+                if (selStatsEl) selStatsEl.style.display = 'none';
+            }
+
+            const cAllEl = document.getElementById('cAll');
+            const cSelEl = document.getElementById('cSel');
+            const cRemEl = document.getElementById('cRem');
+            if (cAllEl) cAllEl.innerText = nTotal;
+            if (cSelEl) cSelEl.innerText = nSel;
+            if (cRemEl) cRemEl.innerText = nRem;
 
             const nDup = (window.duplicatesList || []).length;
             const dt = document.getElementById('dupTab');
-            if (nDup > 0) { dt.style.display = 'flex'; document.getElementById('cDup').innerText = nDup; }
-            else { dt.style.display = 'none'; }
+            if (dt) {
+                if (nDup > 0) {
+                    dt.style.display = 'flex';
+                    const cDupEl = document.getElementById('cDup');
+                    if (cDupEl) cDupEl.innerText = nDup;
+                } else {
+                    dt.style.display = 'none';
+                }
+            }
 
             filteredSongs = songs.filter(s => {
                 const info = sheet[s.title] || {};
@@ -1239,7 +1274,15 @@
                 return (filter === 'all' || s.lang === filter) && match;
             });
 
-            document.getElementById('list').innerHTML = filteredSongs.map((s, idx) => {
+            console.log('filteredSongs.length:', filteredSongs.length, 'role:', role);
+
+            const listEl = document.getElementById('list');
+            if (!listEl) {
+                console.warn('Element #list not found, cannot render songs');
+                return;
+            }
+
+            listEl.innerHTML = filteredSongs.map((s, idx) => {
                 const info = sheet[s.title] || {};
                 let act = '';
                 const isChecked = checkedSongs.has(s.title);
@@ -1272,6 +1315,8 @@
                     </div>
                 </div>`;
             }).join('');
+
+            console.log('List HTML generated, length:', listEl.innerHTML.length);
 
             const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
             const alphaDiv = document.getElementById('alpha');
