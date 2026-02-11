@@ -1149,20 +1149,29 @@
             role = 'editor';
             document.getElementById('loginOverlay').style.display = 'none';
             document.body.style.overflow = 'auto';
-            document.getElementById('gamify').style.display = 'flex';
             document.getElementById('mBar').style.bottom = '-80px';
 
-            // Start User Timer
-            if (timerInterval) clearInterval(timerInterval);
-            sessionStartTime = Date.now();
-            timerInterval = setInterval(() => {
-                const now = Date.now();
-                const diff = Math.floor((now - sessionStartTime) / 1000);
-                const m = Math.floor(diff / 60).toString().padStart(2, '0');
-                const s = (diff % 60).toString().padStart(2, '0');
-                const tEl = document.getElementById('time-' + name.toLowerCase());
-                if (tEl) tEl.innerText = `${m}:${s}`;
-            }, 1000);
+            // Only show gamification for actual users (not Editor/Admin)
+            const isGamifiedUser = ['Mihai', 'Dani', 'Andreea'].includes(name);
+
+            if (isGamifiedUser) {
+                document.getElementById('gamify').style.display = 'flex';
+
+                // Start User Timer
+                if (timerInterval) clearInterval(timerInterval);
+                sessionStartTime = Date.now();
+                timerInterval = setInterval(() => {
+                    const now = Date.now();
+                    const diff = Math.floor((now - sessionStartTime) / 1000);
+                    const m = Math.floor(diff / 60).toString().padStart(2, '0');
+                    const s = (diff % 60).toString().padStart(2, '0');
+                    const tEl = document.getElementById('time-' + name.toLowerCase());
+                    if (tEl) tEl.innerText = `${m}:${s}`;
+                }, 1000);
+            } else {
+                // For Editor/Admin, hide gamification
+                document.getElementById('gamify').style.display = 'none';
+            }
 
             init();
         }
