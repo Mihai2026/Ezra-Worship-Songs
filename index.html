@@ -597,6 +597,210 @@
             flex-shrink: 0;
         }
 
+        /* NEON USER LOGIN */
+        .user-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .user-btn {
+            padding: 15px 10px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .user-mihai {
+            border-color: #4facfe;
+            box-shadow: 0 0 15px rgba(79, 172, 254, 0.2);
+            text-shadow: 0 0 10px #4facfe;
+        }
+
+        .user-dani {
+            border-color: #dbeafe;
+            box-shadow: 0 0 15px rgba(219, 234, 254, 0.2);
+            text-shadow: 0 0 10px #dbeafe;
+        }
+
+        .user-andreea {
+            border-color: #fbbf24;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+            text-shadow: 0 0 10px #fbbf24;
+        }
+
+        .user-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* RUSTY INDUSTRIAL NEON FLIP CLOCKS */
+        .neon-dash {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .flip-clock {
+            background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+            border-radius: 8px;
+            position: relative;
+            width: 60px;
+            padding: 8px 4px;
+            text-align: center;
+            /* Rusted Metal Border Look */
+            border: 2px solid #5a4a42;
+            /* Dark bronze base */
+            border-top-color: #8b7355;
+            /* Highlight */
+            border-bottom-color: #3e2723;
+            /* Shadow */
+            box-shadow:
+                inset 0 0 10px #000,
+                /* Inner darkness */
+                0 4px 6px rgba(0, 0, 0, 0.7),
+                /* Drop shadow */
+                0 0 5px rgba(139, 69, 19, 0.4);
+            /* Rusty glow */
+            /* Noise texture simulation with grain */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+        }
+
+        .flip-val {
+            font-family: 'Courier New', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+            position: relative;
+            z-index: 2;
+            /* Worn out digit effect */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(200, 200, 200, 0.6) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+            opacity: 0.9;
+        }
+
+        .flip-label {
+            font-size: 8px;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-top: 5px;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .flip-clock {
+            background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+            border-radius: 8px;
+            position: relative;
+            width: 60px;
+            padding: 8px 4px;
+            text-align: center;
+            /* Rusted Metal Border Look */
+            border: 2px solid #5a4a42;
+            /* Dark bronze base */
+            border-top-color: #8b7355;
+            /* Highlight */
+            border-bottom-color: #3e2723;
+            /* Shadow */
+            box-shadow:
+                inset 0 0 10px #000,
+                /* Inner darkness */
+                0 4px 6px rgba(0, 0, 0, 0.7),
+                /* Drop shadow */
+                0 0 5px rgba(139, 69, 19, 0.4);
+            /* Rusty glow */
+            /* NOISE TEXTURE */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+        }
+
+        .flip-label {
+            font-size: 7px;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-top: 6px;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            color: #a89f91;
+            /* Old paper / brass color */
+            text-shadow: 0 1px 1px #000;
+        }
+
+        /* Split Line Effect - Worn out */
+        .flip-clock::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 2px;
+            right: 2px;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 5;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Clock Colors - Overlaid Neon on Rust */
+        .fc-green {
+            border-color: #556b2f;
+            box-shadow: inset 0 0 15px rgba(0, 255, 0, 0.1), 0 0 5px #556b2f;
+        }
+
+        .fc-green .flip-val {
+            text-shadow: 0 0 5px rgba(79, 172, 254, 0.6);
+            -webkit-text-fill-color: #e0f2fe;
+        }
+
+        .fc-green .flip-label {
+            color: #a89f91;
+        }
+
+        .fc-red {
+            border-color: #8b0000;
+            box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.1), 0 0 5px #8b0000;
+        }
+
+        .fc-red .flip-val {
+            text-shadow: 0 0 5px rgba(255, 75, 43, 0.6);
+            -webkit-text-fill-color: #fee2e2;
+        }
+
+        .fc-red .flip-label {
+            color: #a89f91;
+        }
+
+        .fc-blue {
+            border-color: #b8860b;
+            box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.1), 0 0 5px #b8860b;
+        }
+
+        .fc-blue .flip-val {
+            text-shadow: 0 0 5px rgba(251, 191, 36, 0.6);
+            -webkit-text-fill-color: #fef3c7;
+        }
+
+        .fc-blue .flip-label {
+            color: #a89f91;
+        }
+
+        .fc-blue .flip-label {
+            color: #fbbf24;
+        }
+
         .nav-btn:disabled {
             opacity: 0.2;
         }
@@ -801,13 +1005,23 @@
 </head>
 
 <body>
-    <div id="loginOverlay">
-        <div class="login-box">
-            <p style="font-size:11px; color:var(--d); margin-bottom:5px">EZRA WORSHIP LONDON</p>
-            <h2>BINE AI VENIT</h2><input type="password" id="pinInput" class="pin-input" maxlength="4"
-                placeholder="••••" oninput="check_role()">
-            <div id="err" style="color:var(--rem); font-size:10px; height:15px; font-weight:700"></div>
-            <p style="font-size:9px; color:rgba(255,255,255,0.3); margin-top:20px">EDITOR: 2025 | USER: 1111</p>
+    <div id="loginOverlay" style="background: #000;">
+        <div class="login-box" style="border:none; background:transparent; box-shadow:none;">
+            <p style="font-size:11px; color:#fff; letter-spacing:4px; margin-bottom:20px; opacity:0.6">EZRA WORSHIP
+                SORTING</p>
+            <h1
+                style="font-size:32px; text-transform:uppercase; margin-bottom:40px; text-shadow:0 0 20px rgba(255,255,255,0.5)">
+                Cine ești?</h1>
+
+            <div class="user-grid">
+                <div class="user-btn user-mihai" onclick="loginUser('Mihai')">MIHAI</div>
+                <div class="user-btn user-dani" onclick="loginUser('Dani')">DANI</div>
+                <div class="user-btn user-andreea" onclick="loginUser('Andreea')">ANDREEA</div>
+            </div>
+
+            <button onclick="loginUser('Editor')"
+                style="margin-top:40px; background:transparent; border:none; color:#555; font-size:10px">Admin
+                Login</button>
         </div>
     </div>
     <div id="toast"></div>
@@ -843,8 +1057,23 @@
     </div>
     <div class="c">
         <div class="box">
+            <div class="neon-dash" id="gamify"
+                style="display:none; justify-content:space-around; gap:10px; margin-bottom:10px;">
+                <div class="flip-clock fc-green" style="width:50px; padding:5px;">
+                    <span class="flip-val" id="cnt-mihai" style="font-size:1.5rem">0</span>
+                    <div class="flip-label" style="font-size:7px">MIHAI</div>
+                </div>
+                <div class="flip-clock fc-red" style="width:50px; padding:5px;">
+                    <span class="flip-val" id="cnt-dani" style="font-size:1.5rem">0</span>
+                    <div class="flip-label" style="font-size:7px">DANI</div>
+                </div>
+                <div class="flip-clock fc-blue" style="width:50px; padding:5px;">
+                    <span class="flip-val" id="cnt-andreea" style="font-size:1.5rem">0</span>
+                    <div class="flip-label" style="font-size:7px">ANDREEA</div>
+                </div>
+            </div>
             <input type="text" id="in" placeholder="Cauta cantari..." oninput="r()">
-            <div class="stats-summary">
+            <div class="stats-summary" id="oldStats" style="display:flex">
                 <div class="stat-item">Total: <b id="sTotal">0</b></div>
                 <div id="selStats" class="stat-item" style="display:none">De sortat: <b id="sUnsorted">0</b> (<b
                         id="sPerc">0%</b>)</div>
@@ -903,6 +1132,43 @@
             const s = window.pageYOffset || document.documentElement.scrollTop;
             if (s > 400) b.style.display = 'flex'; else b.style.display = 'none';
         }, { passive: true });
+
+        // GAMIFICATION LOGIC
+        let currentUser = "";
+        let sessionScore = { ok: 0, del: 0, tag: 0 };
+
+        function loginUser(name) {
+            currentUser = name;
+            role = 'editor';
+            document.getElementById('loginOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('gamify').style.display = 'flex';
+            document.getElementById('mBar').style.bottom = '-80px';
+            init();
+        }
+
+        function updateCounters(action, value) {
+            if (action === 'toggleSelect' && value === 'Yes') { sessionScore.ok++; animateFlip('cnt-ok'); }
+            if (action === 'removeSong' && value === 'Yes') { sessionScore.del++; animateFlip('cnt-del'); }
+            if (action === 'updateTags') { sessionScore.tag++; animateFlip('cnt-tag'); }
+
+            document.getElementById('cnt-ok').innerText = sessionScore.ok;
+            document.getElementById('cnt-del').innerText = sessionScore.del;
+            document.getElementById('cnt-tag').innerText = sessionScore.tag;
+
+            // Send user info to backend (requires app script update)
+            // We append user to the value string temporarily or handle in backend logic
+        }
+
+        function animateFlip(id) {
+            const el = document.getElementById(id);
+            el.style.transform = "scale(1.2)";
+            el.style.textShadow = "0 0 30px #fff";
+            setTimeout(() => {
+                el.style.transform = "scale(1)";
+                el.style.textShadow = "";
+            }, 200);
+        }
 
         // Immediate stop and jump to top
         function toTopImmediate(e) {
@@ -1123,19 +1389,25 @@
         async function sendNav(a, v) {
             const t = filteredSongs[curRelIdx].title;
             try {
-                fetch(API, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ title: t, action: a, value: v }) });
+                fetch(API, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ title: t, action: a, value: v, user: currentUser }) });
                 if (!sheet[t]) sheet[t] = { title: t };
                 if (a === 'toggleSelect') sheet[t].selected = v;
                 if (a === 'updateTags') { sheet[t].tempo = v.tempo; sheet[t].mood = v.mood; }
                 if (a === 'removeSong') sheet[t].removed = v;
+
+                updateCounters(a, v);
                 r();
                 msg("Gata!");
+
                 if (document.getElementById('ov').style.display === 'flex') {
                     if (curRelIdx >= filteredSongs.length) curRelIdx = filteredSongs.length - 1;
                     if (filteredSongs.length > 0 && curRelIdx >= 0) shNav(curRelIdx);
                     else cl();
                 }
-            } catch (e) { msg("Eroare"); }
+            } catch (e) {
+                console.error(e);
+                msg("Eroare");
+            }
         }
         function stNav(v) { const i = sheet[filteredSongs[curRelIdx].title] || { mood: '' }; const n = i.tempo === v ? '' : v; sendNav('updateTags', { tempo: n, mood: i.mood }); }
         function smNav(v) { const i = sheet[filteredSongs[curRelIdx].title] || { tempo: '' }; const n = i.mood === v ? '' : v; sendNav('updateTags', { tempo: i.tempo, mood: n }); }
